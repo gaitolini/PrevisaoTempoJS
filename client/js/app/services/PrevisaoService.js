@@ -4,6 +4,27 @@ class PrevisaoService {
         this._http = new HttpService();
     }
 
+    pullCidade() {
+
+        return new Promise((resolve, reject) => {
+
+            let siteServico = 'http://servicos.cptec.inpe.br';
+
+            this._http.get(siteServico + '/XML/listaCidades?city=blumenau')
+                .then(cidades => {
+
+                    resolve(cidades.map(objeto => new Cidade(objeto.cidade, objeto.uf, objeto.id)));
+                })
+                .catch(erro => {
+                    console.log(erro);
+                    reject('Não foi possível obter as previsões.');
+
+                });
+
+        });
+
+    }
+
     pullNegociacoesDaSemanaRetrasada() {
 
         return new Promise((resolve, reject) => {
@@ -11,7 +32,7 @@ class PrevisaoService {
             this._http.get('/negociacoes/retrasada')
                 .then(previsoes => {
 
-                    resolve(previsoes.map(objeto => new Previsaoao(objeto.dia, objeto.cidade)));
+                    resolve(previsoes.map(objeto => new Previsao(objeto.dia, objeto.cidade)));
                 })
                 .catch(erro => {
                     console.log(erro);
@@ -28,7 +49,7 @@ class PrevisaoService {
 
             this._http.get('/negociacoes/semana')
                 .then(previsoes => {
-                    resolve(previsoes.map(objeto => new Previsao(objeto.dia, objeto.cidade)));
+                    resolve(previsoes.map(objeto => new Previsao(objeto.diasPrevisao, objeto.cidade)));
                 })
                 .catch(erro => {
                     console.log(erro);

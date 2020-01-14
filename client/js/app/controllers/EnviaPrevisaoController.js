@@ -2,8 +2,8 @@ class EnviaPrevisaoController {
 
     constructor() {
         let $ = document.querySelector.bind(document);
-        this._inputDia = $("#dia");
-        this._inputCidade = $("#cidade");
+        this._inputDia = $("#dias");
+        this._inputCidade = $("#nomeCidade");
         // this._inputValor = $("#valor");
 
         this._mensagem = new Bind(
@@ -14,8 +14,8 @@ class EnviaPrevisaoController {
     }
 
     _limpaFormulario() {
-        this._inputDia.value = '';
-        this._inputCidade.value = 0;
+        this._inputDia.value = 1;
+        this._inputCidade.value = '';
         // this._inputValor.value = 0.0
         this._inputDia.focus();
     }

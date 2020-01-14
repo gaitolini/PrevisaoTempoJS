@@ -1,4 +1,4 @@
-class PrevisoesViews extends View {
+class CidadeViews extends View {
 
 
 
@@ -8,16 +8,16 @@ class PrevisoesViews extends View {
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
-                    <th onclick="previsaoController.ordena('diasPrevisao')" >DIAS</th>
-                    <th onclick="previsaoController.ordena('siglaPrevisao')" >PREVISÃO</th>
+                    <th onclick="cidadeController.ordena('nomeCidade')" >CIDADE</th>
+                    <th onclick="cidadeController.ordena('uf')" >UF</th>
                 </tr>
             </thead>
 
             <tbody>
-                ${model.previsoes.map(n => `
+                ${model.cidades.map(n => `
                     <tr>
-                        <td>${n.diasPrevisao}</td>
-                        <td>${n.siglaPrevisao}</td>
+                        <td>${n.nome}</td>
+                        <td>${n.uf}</td>
                     </tr>
                 `).join('')}
             </tbody>

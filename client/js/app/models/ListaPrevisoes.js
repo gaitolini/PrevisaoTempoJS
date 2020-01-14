@@ -17,7 +17,7 @@ class ListaPrevisoes {
         this._previsoes.reverse();
     }
 
-    get negociacoes() {
+    get previsoes() {
         return [].concat(this._previsoes);
     }
 

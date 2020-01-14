@@ -2,14 +2,15 @@ class Previsao {
 
     constructor(dia, tempo, maxima, minina, iuv, atualizacao, diasPrevisao, cidade) {
 
-        this._dia = 1;
-        this._tempo = '';
-        this._maxima = 0;
-        this._minima = 0;
-        this._iuv = 0.0;
+        this._dia = dia;
+        this._tempo = tempo;
+        this._maxima = maxima;
+        this._minima = minina;
+        this._iuv = iuv;
         this._atualizacao = new Date(atualizacao.getTime());
-        this._diasPrevisao = 1;
-        this._cidade = new Cidade();
+        this._diasPrevisao = diasPrevisao;
+        cidade = new Cidade();
+        this._cidade = cidade
         Object.freeze(this);
     }
 

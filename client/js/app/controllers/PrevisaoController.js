@@ -3,8 +3,8 @@ class PrevisaoController {
     constructor() {
 
         let $ = document.querySelector.bind(document);
-        this._inputData = $("#dias");
-        this._inputQuantidade = $("#cidade");
+        this._inputDiasPrevisao = $("#diasPrevisao");
+        this._inputCidade = $("#cidade");
 
         this._ordemAtual = '';
 
@@ -14,17 +14,17 @@ class PrevisaoController {
             'texto'
         );
 
-        this._listaPrevisoes = new Bind(
-            new ListaPrevisoes(),
-            new Views($("#previsoesView")),
-            'adiciona', 'limpa', 'ordena', 'inverteOrdem'
-        );
+        // this._listaCidades = new Bind(
+        //     new ListaPrevisoes(),
+        //     new Views($("#previsoesView")),
+        //     'adiciona', 'limpa', 'ordena', 'inverteOrdem'
+        // );
 
     }
 
     _limpaFormulario() {
-        this._inputDia.value = 1;
-        this._inputCidade.value = 0;
+        this._inputDiasPrevisao.value = 1;
+        this._inputCidade.value = '';
         this._inputData.focus();
     }
 
@@ -37,7 +37,7 @@ class PrevisaoController {
     }
 
     apaga() {
-        this._listaPrevisoes.limpa();
+        this._listaCidades.limpa();
 
         this._mensagem.texto = "Previsões apagadas com sucessos!";
     }
@@ -48,7 +48,7 @@ class PrevisaoController {
 
         try {
 
-            this._listaPrevisoes.adiciona(this._criaPrevisao());
+            this._listaPrevisao.adiciona(this._criaPrevisao());
             this._mensagem.texto = 'Mensagem adionada com sucesso';
             this._limpaFormulario();
         } catch (erro) {
@@ -59,30 +59,34 @@ class PrevisaoController {
     ordena(coluna) {
         if (this._ordemAtual == coluna) {
             //inverte a  ordem da lista
-            this._listaPrevisoes.inverteOrdem();
+            this._listaCidades.inverteOrdem();
         } else {
 
-            this._listaPrevisoes.ordena((a, b) => a[coluna] - b[coluna]);
+            this._listaCidades.ordena((a, b) => a[coluna] - b[coluna]);
         }
         this._ordemAtual = coluna;
 
     }
 
-    importaNegociacoes() {
-
+    importaPrevisoes() {
         let service = new PrevisaoService();
 
         Promise.all([
-            service.pullPrevisoesDaSemana(),
-            service.pullPrevisoesDaSemanaAnterior(),
-            service.pullNegociacoesDaSemanaRetrasada()]
-        ).then(negociacoes => {
-            negociacoes
+            service.pullPrevisoes(),
+            // service.pullPrevisoesDaSemanaAnterior(),
+            // service.pullNegociacoesDaSemanaRetrasada()
+        ]
+        ).then(previsoes => {
+            previsoes
                 .reduce((arrayPrevisao, array) => arrayPrevisao.concat(array), [])
-                .forEach(previsao => this._listaPrevisoes.adiciona(previsao));
-            this._mensagem.texto = 'Previsões importadas com sucesso.';
+                .forEach(previsao => this._listaPrevisao.adiciona(previsao));
+            this._mensagem.texto = 'Previsoes importadas com sucesso.';
         })
             .catch(erro => this._mensagem.texto = erro);
+
+
     }
+
+
 
 }

@@ -9,6 +9,8 @@ class HttpService {
 
     // 4: requisição está concluída e a resposta está pronta
 
+
+
     get(url) {
 
         return new Promise((resolve, reject) => {

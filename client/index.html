@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Negociações</title>
+    <title>Previsão do tempo</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
 
@@ -11,73 +11,55 @@
 
 <body class="container">
 
-    <h1 class="text-center">Negociações</h1>
+    <h1 class="text-center">Previsão do tempo</h1>
     <div id="mensagemView">
         <p></p>
     </div>
-    <form class="form" onsubmit="negociacaoController.adiciona(event)">
-
-        <!-- <div class="form-group"> -->
-        <!-- <label for="data">Data</label> -->
-        <!-- Só funciona no Chrome -->
-        <!-- <input type="date" id="data" class="form-control" required autofocus /> -->
-
-        <!-- funciona no Firefox e Chrome! -->
-        <!-- <input type="text" placeholder="dd/mm/aaaa" id="data" class="form-control" required autofocus /> -->
-        <!-- </div> -->
-
-        <!-- <div class="form-group">
-            <label for="quantidade">Quantidade</label>
-            <input type="number" min="1" step="1" id="quantidade" class="form-control" value="1" required />
-        </div> -->
+    <form class="form">
+        <!-- onsubmit="negociacaoController.adiciona(event)" -->
 
         <div class="form-group">
             <label for="dias">Dias para previsão</label>
             <input type="number" min="1" max="7" step="1" id="dias" class="form-control" value="1" required />
         </div>
 
-        <!-- <div class="form-group">
-            <label for="valor">Valor</label>
-            <input id="valor" type="number" class="form-control" min="0.01" step="0.01" value="0.0" required />
-        </div> -->
-
         <div class="form-group">
-            <label for="cidade">Cidade</label>
-            <input id="cidade" type="text" class="form-control" required />
+            <label for="nomeCidade">Cidade</label>
+            <input id="nomeCidade" type="text" class="form-control" required />
         </div>
 
-        <button class="btn btn-primary" type="submit">Incluir</button>
     </form>
 
     <div class="text-center">
-        <button onclick="negociacaoController.importaNegociacoes()" class="btn btn-primary text-center"
-            type="button">Obter previsão do tempo</button>
-        <!-- <button onclick="negociacaoController.importaNegociacoes()" class="btn btn-primary text-center" type="button">Importar Negociações</button>
-        <button onclick="negociacaoController.apaga()" class="btn btn-primary text-center" type="button">Apagar</button> -->
+        <button onclick="cidadeController.importaCidades()" class="btn btn-primary text-center" type="submit">Obter
+            previsão do tempo</button>
     </div>
     <br>
     <br>
 
     <!-- <div id="negociacoesView"></div> -->
-    <div id="negociacoesView"></div>
+    <div id="previsoesView"></div>
 
 
     <!-- <script src="./js/index.js"></script> -->
-    <script src="./js/app/models/Negociacao.js"></script>
-    <script src="./js/app/controllers/NegociacaoController.js"></script>
+    <script src="./js/app/models/Previsao.js"></script>
+    <script src="./js/app/models/Cidade.js"></script>
+    <script src="./js/app/controllers/PrevisaoController.js"></script>
+    <script src="./js/app/controllers/CidadeController.js"></script>
     <script src="./js/app/helpers/DateHelper.js"></script>
-    <script src="./js/app/models/ListaNegociacoes.js"></script>
+    <script src="./js/app/models/ListaPrevisoes.js"></script>
+    <script src="./js/app/models/ListaCidades.js"></script>
     <script src="./js/app/views/View.js"></script>
-    <script src="./js/app/views/NegociacoesView.js"></script>
+    <script src="./js/app/views/PrevisoesView.js"></script>
     <script src="./js/app/views/MensageView.js"></script>
     <script src="./js/app/models/Mensagem.js"></script>
-    <script src="./js/app/models/Conta.js"></script>
     <script src="./js/app/services/ProxyFactory.js"></script>
     <script src="./js/app/helpers/Bind.js"></script>
-    <script src="./js/app/services/NegociacaoService.js"></script>
+    <script src="./js/app/services/PrevisaoService.js"></script>
     <script src="./js/app/services/HttpService.js"></script>
     <script>
-        let negociacaoController = new NegociacaoController();
+        let previsaoController = new PrevisaoController();
+        let cidadeController = new CidadeController();
     </script>
 </body>
 
