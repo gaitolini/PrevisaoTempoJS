@@ -12,11 +12,11 @@ class CidadeController {
             'texto'
         );
 
-        this._listaCidades = new Bind(
-            new ListaCidades(),
-            new Views($("#tabelaView")),
-            'adiciona', 'limpa', 'ordena', 'inverteOrdem'
-        );
+        // this._listaCidades = new Bind(
+        //     new ListaCidades(),
+        //     new Views($("#cidadesViews")),
+        //     'adiciona', 'limpa', 'ordena', 'inverteOrdem'
+        // );
 
     }
 
@@ -62,18 +62,18 @@ class CidadeController {
 
     }
 
-    importaCdaides() {
+    importaCidades() {
 
-        let service = new CidadeService();
+        let service = new PrevisaoService();
 
         Promise.all([
-            service.pullCidade()]
-        ).then(cidades => {
-            cidades
-                .reduce((arrayCidades, array) => arrayCidades.concat(array), [])
-                .forEach(cidade => this._listaCidades.adiciona(cidade));
-            this._mensagem.texto = 'Cidades importadas com sucesso.';
-        })
+                service.pullCidade()
+            ]).then(cidades => {
+                cidades
+                    .reduce((arrayCidades, array) => arrayCidades.concat(array), [])
+                    .forEach(cidade => this._listaCidades.adiciona(cidade));
+                this._mensagem.texto = 'Cidades importadas com sucesso.';
+            })
             .catch(erro => this._mensagem.texto = erro);
     }
 

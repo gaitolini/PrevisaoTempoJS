@@ -23,7 +23,8 @@ class HttpService {
 
                     if (xhr.status == 200) {
 
-                        resolve(JSON.parse(xhr.responseText));
+                        resolve(xhr.responseXML.JSON.parse());
+                        // resolve(JSON.parse(xhr.responseText));
                     } else {
                         console.log(xhr.responseText);
                         reject('Não foi possível obter dados da URL.');

@@ -14,11 +14,11 @@ class PrevisaoController {
             'texto'
         );
 
-        this._listaCidades = new Bind(
-            new ListaPrevisoes(),
-            new Views($("#tabelaViews")),
-            'adiciona', 'limpa', 'ordena', 'inverteOrdem'
-        );
+        // this._listaCidades = new Bind(
+        //     new ListaPrevisoes(),
+        //     new Views($("#previsoesViews")),
+        //     'adiciona', 'limpa', 'ordena', 'inverteOrdem'
+        // );
 
     }
 
@@ -72,16 +72,15 @@ class PrevisaoController {
         let service = new PrevisaoService();
 
         Promise.all([
-            service.pullPrevisoes(),
-            // service.pullPrevisoesDaSemanaAnterior(),
-            // service.pullNegociacoesDaSemanaRetrasada()
-        ]
-        ).then(previsoes => {
-            previsoes
-                .reduce((arrayPrevisao, array) => arrayPrevisao.concat(array), [])
-                .forEach(previsao => this._listaPrevisao.adiciona(previsao));
-            this._mensagem.texto = 'Previsoes importadas com sucesso.';
-        })
+                service.pullPrevisoes(),
+                // service.pullPrevisoesDaSemanaAnterior(),
+                // service.pullNegociacoesDaSemanaRetrasada()
+            ]).then(previsoes => {
+                previsoes
+                    .reduce((arrayPrevisao, array) => arrayPrevisao.concat(array), [])
+                    .forEach(previsao => this._listaPrevisao.adiciona(previsao));
+                this._mensagem.texto = 'Previsoes importadas com sucesso.';
+            })
             .catch(erro => this._mensagem.texto = erro);
 
 

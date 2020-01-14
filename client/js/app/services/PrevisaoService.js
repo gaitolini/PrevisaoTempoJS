@@ -13,11 +13,12 @@ class PrevisaoService {
             this._http.get(siteServico + '/XML/listaCidades?city=blumenau')
                 .then(cidades => {
 
+                    // resolve(cidades.map(objeto => new Cidade(objeto.cidade, objeto.uf, objeto.id)));
                     resolve(cidades.map(objeto => new Cidade(objeto.cidade, objeto.uf, objeto.id)));
                 })
                 .catch(erro => {
                     console.log(erro);
-                    reject('Não foi possível obter as previsões.');
+                    reject('Não foi possível obter as cidades.');
 
                 });
 
