@@ -1,6 +1,4 @@
-class CidadeViews extends View {
-
-
+class CidadesViews extends View {
 
     template(model) {
 
@@ -8,7 +6,7 @@ class CidadeViews extends View {
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
-                    <th onclick="cidadeController.ordena('nomeCidade')" >CIDADE</th>
+                    <th onclick="cidadeController.ordena('nome')" >CIDADE</th>
                     <th onclick="cidadeController.ordena('uf')" >UF</th>
                 </tr>
             </thead>

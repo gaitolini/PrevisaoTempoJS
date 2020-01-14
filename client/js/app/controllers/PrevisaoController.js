@@ -14,11 +14,11 @@ class PrevisaoController {
             'texto'
         );
 
-        // this._listaCidades = new Bind(
-        //     new ListaPrevisoes(),
-        //     new Views($("#previsoesView")),
-        //     'adiciona', 'limpa', 'ordena', 'inverteOrdem'
-        // );
+        this._listaCidades = new Bind(
+            new ListaPrevisoes(),
+            new Views($("#tabelaViews")),
+            'adiciona', 'limpa', 'ordena', 'inverteOrdem'
+        );
 
     }
 

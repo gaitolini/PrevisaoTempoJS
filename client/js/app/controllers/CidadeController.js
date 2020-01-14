@@ -14,7 +14,7 @@ class CidadeController {
 
         this._listaCidades = new Bind(
             new ListaCidades(),
-            new Views($("#previsoesView")),
+            new Views($("#tabelaView")),
             'adiciona', 'limpa', 'ordena', 'inverteOrdem'
         );
 
@@ -62,7 +62,7 @@ class CidadeController {
 
     }
 
-    importaCidades() {
+    importaCdaides() {
 
         let service = new CidadeService();
 
