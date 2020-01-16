@@ -11,10 +11,16 @@ class PrevisaoService {
             let siteServico = 'http://servicos.cptec.inpe.br';
 
             this._http.get(siteServico + '/XML/listaCidades?city=blumenau')
-                .then(cidades => {
+                .then(xml => {
 
-                    // resolve(cidades.map(objeto => new Cidade(objeto.cidade, objeto.uf, objeto.id)));
-                    resolve(cidades.map(objeto => new Cidade(objeto.cidade, objeto.uf, objeto.id)));
+                    console.log(xml);
+
+                    var dom = new XMLSerializer();
+                    var sXML = dom.serializeToString(xml);
+                    dom.getElementById('cidades').innerHTML;
+                    console.log(sXML);
+
+                    // cidades => {resolve(cidades.map(objeto => new Cidade(objeto.cidade, objeto.uf, objeto.id)));
                 })
                 .catch(erro => {
                     console.log(erro);

@@ -10,7 +10,6 @@ class HttpService {
     // 4: requisição está concluída e a resposta está pronta
 
 
-
     get(url) {
 
         return new Promise((resolve, reject) => {
@@ -22,8 +21,7 @@ class HttpService {
                 if (xhr.readyState == 4) {
 
                     if (xhr.status == 200) {
-
-                        resolve(xhr.responseXML.JSON.parse());
+                        resolve(xhr.responseXML);
                         // resolve(JSON.parse(xhr.responseText));
                     } else {
                         console.log(xhr.responseText);
