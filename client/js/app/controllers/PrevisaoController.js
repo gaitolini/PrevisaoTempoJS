@@ -4,8 +4,6 @@ class PrevisaoController {
 
         let $ = document.querySelector.bind(document);
         this._inputNomeCidade = $("#nomeCidade");
-        this._inputDiasPrevisao = $("#diasPrevisao");
-
 
         this._ordemAtual = '';
         this._mensagem = new Bind(
@@ -27,13 +25,11 @@ class PrevisaoController {
 
     _limpaFormulario() {
         this._inputNomeCidade.value = '';
-        this._inputDiasPrevisao.value = 1;
-        this._inputData.focus();
+        this._inputNomeCidade.focus();
     }
 
     _criaPrevisao() {
         return new Previsao(
-            this._inputDiasPrevisao.value,
             this._inputNomeCidade.value
         );
 
@@ -48,8 +44,7 @@ class PrevisaoController {
     }
 
     apaga() {
-        this._listaCidades.limpa();
-
+        this._listaPrevisao.limpa();
         this._mensagem.texto = "Previsões apagadas com sucessos!";
     }
 
