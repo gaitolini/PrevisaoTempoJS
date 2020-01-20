@@ -1,6 +1,6 @@
 class Previsao {
 
-    constructor(dia, tempo, maxima, minina, iuv, atualizacao, diasPrevisao, cidade) {
+    constructor(dia, tempo, maxima, minina, iuv, atualizacao, cidade) {
 
         this._dia = dia;
         this._tempo = tempo;
@@ -8,8 +8,6 @@ class Previsao {
         this._minima = minina;
         this._iuv = iuv;
         this._atualizacao = new Date(atualizacao.getTime());
-        this._diasPrevisao = diasPrevisao;
-        cidade = new Cidade();
         this._cidade = cidade
         Object.freeze(this);
     }

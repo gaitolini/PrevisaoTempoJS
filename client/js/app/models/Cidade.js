@@ -2,9 +2,9 @@ class Cidade {
 
     constructor(nome, uf, id) {
 
-        this._nome = '';
-        this._uf = '';
-        this._id = 0;
+        this._nome = nome;
+        this._uf = uf;
+        this._id = id;
         Object.freeze(this);
     }
 

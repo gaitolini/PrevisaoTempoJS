@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Previsão do tempo</title>
+    <link href="css/libs/google-fonts.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/libs/materialize.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="./css/estilos.css">
 
 </head>
 
@@ -24,22 +27,24 @@
         </div>
 
         <div class="form-group">
-            <label for="nome">Cidade</label>
-            <input id="nome" type="text" class="form-control" required />
+            <label for="nomeCidade">Cidade</label>
+            <input id="nomeCidade" type="text" class="form-control" required />
         </div>
 
     </form>
 
     <div class="text-center">
-        <button onclick="cidadeController.importaCidades()" class="btn btn-primary text-center" type="submit">Obter
+        <button onclick="previsaoController.importaPrevisoes()" class="btn btn-primary text-center" type="button">Obter
             previsão do tempo
         </button>
+        <div class="box-contador">
+            <img src="./img/spinner.gif" alt="spinner2" id="spinner2">
+        </div>
     </div>
     <br>
     <br>
 
     <!-- <div id="negociacoesView"></div> -->
-    <div id="cidadesViews"></div>
     <div id="previsoesViews"></div>
 
 
@@ -48,14 +53,12 @@
     <script src="./js/app/models/Previsao.js"></script>
     <script src="./js/app/models/Cidade.js"></script>
     <script src="./js/app/controllers/PrevisaoController.js"></script>
-    <script src="./js/app/controllers/CidadeController.js"></script>
     <script src="./js/app/helpers/DateHelper.js"></script>
     <script src="./js/app/helpers/JsonXmlHelper.js"></script>
     <script src="./js/app/models/ListaPrevisoes.js"></script>
     <script src="./js/app/models/ListaCidades.js"></script>
     <script src="./js/app/views/View.js"></script>
     <script src="./js/app/views/PrevisoesView.js"></script>
-    <script src="./js/app/views/CidadesView.js"></script>
     <script src="./js/app/views/MensageView.js"></script>
     <script src="./js/app/models/Mensagem.js"></script>
     <script src="./js/app/services/ProxyFactory.js"></script>
@@ -64,7 +67,6 @@
     <script src="./js/app/services/HttpService.js"></script>
     <script>
         let previsaoController = new PrevisaoController();
-        let cidadeController = new CidadeController();
     </script>
 </body>
 

@@ -2,44 +2,40 @@ class PrevisaoService {
 
     constructor() {
         this._http = new HttpService();
+
     }
 
-    pullCidade() {
+
+    pullCidade(nomeCidade) {
 
         return new Promise((resolve, reject) => {
 
-            let siteServico = 'http://servicos.cptec.inpe.br';
-
-            this._http.get(siteServico + '/XML/listaCidades?city=blumenau')
+            this._http.get(`http://servicos.cptec.inpe.br/XML/listaCidades?city=${nomeCidade}`)
                 .then(xml => {
-
-                    console.log(xml);
-
-                    var dom = new XMLSerializer();
-                    var sXML = dom.serializeToString(xml);
-                    dom.getElementById('cidades').innerHTML;
-                    console.log(sXML);
-
-                    // cidades => {resolve(cidades.map(objeto => new Cidade(objeto.cidade, objeto.uf, objeto.id)));
+                    resolve(xml.getElementsByTagName("cidades"))
                 })
                 .catch(erro => {
                     console.log(erro);
                     reject('Não foi possível obter as cidades.');
-
                 });
 
         });
 
     }
 
-    pullNegociacoesDaSemanaRetrasada() {
+    // xml.getElementsByTagName("cidades")
+
+    pullPrevisoes(idCidade) {
 
         return new Promise((resolve, reject) => {
 
-            this._http.get('/negociacoes/retrasada')
-                .then(previsoes => {
+            this._http.get(`http://servicos.cptec.inpe.br/XML/cidade/7dias/${idCidade}/previsao.xml`)
+                .then(xml => {
 
-                    resolve(previsoes.map(objeto => new Previsao(objeto.dia, objeto.cidade)));
+                    console.log(xml);
+                    resolve(xml.getElementsByTagName("cidade"));
+
+                    // resolve(previsoes.map(objeto => new Previsao(objeto.dia, objeto.cidade)));
                 })
                 .catch(erro => {
                     console.log(erro);
