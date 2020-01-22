@@ -5,6 +5,7 @@ class PrevisaoController {
         let $ = document.querySelector.bind(document);
         this._inputNomeCidade = $("#nomeCidade");
 
+
         this._ordemAtual = '';
         this._mensagem = new Bind(
             new Mensagem(),
@@ -76,9 +77,8 @@ class PrevisaoController {
 
     importaPrevisoes() {
 
-        let parse = new XMLSerializer
         let service = new PrevisaoService();
-        service.pullCidade(this._inputNomeCidade.value)
+        service.pullCidade(StrHelper.replaceSpecialChars(this._inputNomeCidade.value))
             .then(cidadesXML => {
                 for (let i = 0; i < cidadesXML.length; i++) {
                     var cidade = new Cidade(
