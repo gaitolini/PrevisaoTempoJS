@@ -2,20 +2,20 @@ class PrevisaoController {
 
     constructor() {
 
-        let $ = document.querySelector.bind(document);
-        this._inputNomeCidade = $("#nomeCidade");
+        let dom = document.querySelector.bind(document);
 
+        this._inputNomeCidade = dom("#nomeCidade");
 
         this._ordemAtual = '';
         this._mensagem = new Bind(
             new Mensagem(),
-            new MensageView($("#mensagemView")),
+            new MensageView(dom("#mensagemView")),
             'texto'
         );
 
         this._listaPrevisao = new Bind(
             new ListaPrevisoes(),
-            new PrevisoesView($("#previsoesViews")),
+            new PrevisoesView(dom("#previsoesViews")),
             'adiciona', 'limpa', 'ordena', 'inverteOrdem'
         );
 
