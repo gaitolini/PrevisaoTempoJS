@@ -28,14 +28,14 @@
     </form>
 
     <div class="text-center">
-        <button id="btn-importaPrevisao" onclick="previsaoController.importaPrevisoes()" class="btn btn-primary text-center" type="button">Obter
+        <button id="btn-importaPrevisao" onclick="cidadeController.importaCidades()" class="btn btn-primary text-center" type="button">Obter
             previsão do tempo
         </button>
         <div class="box-contador">
             <img src="./img/spinner.gif" alt="spinner2" id="spinner2">
         </div>
 
-        <button onclick="previsaoController.apaga()" class="btn btn-primary text-center" type="button">
+        <button onclick="cidadeController.apaga()" class="btn btn-primary text-center" type="button">
             Apagar
         </button>
     </div>
@@ -44,7 +44,19 @@
     <br>
 
     <!-- <div id="negociacoesView"></div> -->
-    <div id="previsoesViews"></div>
+    <div id="cidadesViews">
+        <!-- <select class="lista-cidades">
+            <option value="886" selected><span>Penha</span><span>-</span><span>SC</span></option>
+            <option value="868"><span>Blumenau</span><span>-</span><span>SC</span></option>
+            <option value="886"><span>Gaspar</span><span>-</span><span>SC</span></option>
+            <option value="886"><span>Indaial</span><span>-</span><span>SC</span></option>
+        </select> -->
+
+    </div>
+    <br>
+    <br>
+    <div id="previsoesViews">
+    </div>
 
 
 
@@ -53,12 +65,14 @@
     <script src="./js/app/models/Previsao.js"></script>
     <script src="./js/app/models/Cidade.js"></script>
     <script src="./js/app/controllers/PrevisaoController.js"></script>
+    <script src="./js/app/controllers/CidadeController.js"></script>
     <script src="./js/app/helpers/DateHelper.js"></script>
     <script src="./js/app/helpers/JsonXmlHelper.js"></script>
     <script src="./js/app/models/ListaPrevisoes.js"></script>
     <script src="./js/app/models/ListaCidades.js"></script>
     <script src="./js/app/views/View.js"></script>
     <script src="./js/app/views/PrevisoesView.js"></script>
+    <script src="./js/app/views/CidadesView.js"></script>
     <script src="./js/app/views/MensageView.js"></script>
     <script src="./js/app/models/Mensagem.js"></script>
     <script src="./js/app/services/ProxyFactory.js"></script>
@@ -66,7 +80,9 @@
     <script src="./js/app/services/HttpService.js"></script>
     <script src="./js/app/helpers/StrHelper.js"></script>
     <script src="./js/app/services/PrevisaoService.js"></script>
+    <script src="./js/app/services/CidadeService.js"></script>
     <script>
+        let cidadeController = new CidadeController();
         let previsaoController = new PrevisaoController();
     </script>
 </body>
