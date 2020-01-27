@@ -15,7 +15,7 @@ class CidadeController {
 
         this._listaCidade = new Bind(
             new ListaCidades(),
-            new CidadeView(dom("#cidadesViews")),
+            new CidadesView(dom("#cidadesView")),
             'adiciona', 'limpa', 'ordena', 'inverteOrdem'
         );
 
@@ -71,8 +71,11 @@ class CidadeController {
                         cidadesXML[i].getElementsByTagName("uf")[0].childNodes[0].nodeValue,
                         cidadesXML[i].getElementsByTagName("id")[0].childNodes[0].nodeValue
                     )
+
+                    this._listaCidade.adiciona(cidade);
                 }
 
+                this._mensagem.texto = 'Cidade importada com sucesso';
                 console.log('Cidades importadas com sucesso');
 
             }).catch(erro => {
